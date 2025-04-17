@@ -9,7 +9,9 @@ This documentation provides guidelines and best practices for using Git version 
 3. [Basic Git Commands](#basic-git-commands)
 4. [Git Workflow for BetterWYD](#git-workflow-for-betterwyd)
 5. [Best Practices for Unity Projects](#best-practices-for-unity-projects)
-6. [Troubleshooting Common Issues](#troubleshooting-common-issues)
+6. [Branching Strategy](#branching-strategy)
+7. [Recent Repository Updates](#recent-repository-updates)
+8. [Troubleshooting Common Issues](#troubleshooting-common-issues)
 
 ## Introduction to Git
 
@@ -140,7 +142,16 @@ For the BetterWYD project, we recommend the following workflow:
 
 6. **Create a Pull Request** on GitHub for review
 
-7. After review, **merge** the Pull Request into the main branch
+7. After review, **merge** the Pull Request into the main branch using:
+   ```bash
+   git checkout main
+   git merge feature/your-feature-name --no-ff -m "Merge feature/your-feature-name: Brief description of the changes"
+   ```
+
+8. **Push the merged changes** to the remote repository:
+   ```bash
+   git push origin main
+   ```
 
 ## Best Practices for Unity Projects
 
@@ -174,6 +185,56 @@ Be cautious when merging scene files as conflicts can be difficult to resolve. C
 - Commit often with smaller, focused changes
 - Ensure the project is in a working state before committing
 - Use descriptive commit messages
+
+## Branching Strategy
+
+For BetterWYD we follow a specific branching strategy:
+
+### Branch Types
+
+1. **main**: The production-ready branch that always contains the latest stable code
+2. **feature/[name]**: Used for developing new features (e.g., `feature/jira-integration`)
+3. **bugfix/[name]**: Used for fixing bugs (e.g., `bugfix/player-collision`)
+4. **hotfix/[name]**: For critical fixes that need to be applied to production immediately
+5. **release/[version]**: For preparing release versions (e.g., `release/1.0.0`)
+
+### Branch Naming Conventions
+
+- Use lowercase letters and hyphens for branch names
+- Use descriptive names that reflect the purpose of the branch
+- Examples:
+  - `feature/player-movement`
+  - `bugfix/ui-scaling`
+  - `hotfix/critical-crash`
+  - `release/0.9.0`
+
+### Merging Strategies
+
+- Use `--no-ff` (no fast-forward) when merging feature branches to preserve branch history
+- Create meaningful merge commit messages that summarize the feature or changes
+- Example:
+  ```bash
+  git merge feature/jira-integration --no-ff -m "Merge feature/jira-integration: Add Jira integration tools and workflow"
+  ```
+
+## Recent Repository Updates
+
+### Completed Merges
+
+| Date | Branch | Description | Merge Commit |
+|------|--------|-------------|--------------|
+| April 17, 2025 | feature/jira-integration | Added Jira integration tools for tracking issues and managing workflow | Merged into main |
+
+### Active Branches
+
+Currently, the main active branches are:
+- `main`: The primary development branch
+
+### Upcoming Branches
+
+Planned branches for upcoming features:
+- `feature/character-controller`: For implementing basic player movement
+- `feature/database-schema`: For implementing initial database structure
 
 ## Troubleshooting Common Issues
 

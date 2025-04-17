@@ -6,6 +6,7 @@ This is a modern remake of the classic MMORPG "With Your Destiny" (WYD) using Un
 ## Development Guidelines
 
 ### Cross-Platform Compatibility
+
 - Use macOS and Windows together for development
 - Consider compatibility when creating new implementations
 
