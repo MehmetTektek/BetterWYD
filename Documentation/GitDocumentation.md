@@ -8,10 +8,11 @@ This documentation provides guidelines and best practices for using Git version 
 2. [Setup and Configuration](#setup-and-configuration)
 3. [Basic Git Commands](#basic-git-commands)
 4. [Git Workflow for BetterWYD](#git-workflow-for-betterwyd)
-5. [Best Practices for Unity Projects](#best-practices-for-unity-projects)
-6. [Branching Strategy](#branching-strategy)
-7. [Recent Repository Updates](#recent-repository-updates)
-8. [Troubleshooting Common Issues](#troubleshooting-common-issues)
+5. [Jira Integration with Git](#jira-integration-with-git)
+6. [Best Practices for Unity Projects](#best-practices-for-unity-projects)
+7. [Branching Strategy](#branching-strategy)
+8. [Recent Repository Updates](#recent-repository-updates)
+9. [Troubleshooting Common Issues](#troubleshooting-common-issues)
 
 ## Introduction to Git
 
@@ -152,6 +153,64 @@ For the BetterWYD project, we recommend the following workflow:
    ```bash
    git push origin main
    ```
+
+## Jira Integration with Git
+
+The BetterWYD project includes a Git hook integration with Jira to automatically update tickets when they are referenced in commit messages.
+
+### Setup Jira Integration
+
+1. The integration scripts are located in `DevTools/JiraIntegration/`
+2. Create a copy of the post-commit hook on your local machine:
+   ```bash
+   # For Windows (PowerShell):
+   Copy-Item "DevTools/JiraIntegration/hooks/post-commit.ps1" ".git/hooks/post-commit"
+   
+   # For Mac/Linux:
+   cp DevTools/JiraIntegration/hooks/post-commit.sh .git/hooks/post-commit
+   chmod +x .git/hooks/post-commit
+   ```
+
+3. Make sure the script is executable:
+   ```bash
+   # For Windows (PowerShell):
+   icacls .git\hooks\post-commit /grant Everyone:RX
+   
+   # For Mac/Linux:
+   chmod +x .git/hooks/post-commit
+   ```
+
+4. Configure your Jira credentials by creating a `.env` file in the `DevTools/JiraIntegration/` directory based on the `.env.example` template.
+
+### Using the Jira Integration
+
+When making commits, you can reference Jira tickets and even transition them to different states:
+
+1. **Simple reference**: Just include the ticket ID
+   ```bash
+   git commit -m "BWYD-123: Add new feature"
+   ```
+   This will add your commit details as a comment on the BWYD-123 ticket.
+
+2. **With status transition**: Add a hashtag to change the ticket status
+   ```bash
+   git commit -m "BWYD-123 #done: Fix critical bug"
+   ```
+   This will add a comment and transition the ticket to "Done" status.
+
+### Supported Transition Commands
+
+The following transition commands are supported:
+- `#inprogress` → "In Progress"
+- `#review` → "In Review"
+- `#done`, `#resolved`, `#fixed`, `#complete`, `#completed`, `#close`, `#closed` → "Done"
+
+### Manual Update
+
+You can also manually update Jira from a specific commit:
+```bash
+python DevTools/JiraIntegration/update_jira_from_commit.py <commit-hash>
+```
 
 ## Best Practices for Unity Projects
 
