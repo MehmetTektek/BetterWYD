@@ -12,11 +12,12 @@ This document tracks the current development status of BetterWYD against the roa
 | Core systems framework | Not Started | - | - |
 | Character controller | Not Started | - | - |
 | Database schema | Not Started | - | - |
+| Jira Integration | Completed | - | Integrated development tools with Jira for issue tracking |
 
 ## Overall Progress
 
 ### Phase 1: Foundation & Core Systems
-- Week 1-2: 5% complete
+- Week 1-2: 15% complete
 - Week 3-4: Not started
 
 ### Phase 2: Gameplay Implementation
@@ -27,7 +28,8 @@ This document tracks the current development status of BetterWYD against the roa
 
 ## Recent Milestones
 
-*No milestones completed yet*
+- **April 17, 2025**: Completed Jira integration toolset to support project management workflows
+- **April 17, 2025**: Successfully merged feature/jira-integration branch into main
 
 ## Blockers & Risks
 
@@ -38,7 +40,8 @@ This document tracks the current development status of BetterWYD against the roa
 1. Complete project architecture design
 2. Begin implementing core systems framework
 3. Create basic character controller prototype
+4. Set up Jira project structure using new integration tools
 
 ---
 
-*Last Updated: April 16, 2025*
+*Last Updated: April 17, 2025*

@@ -19,6 +19,7 @@ This document outlines the 3-month development plan for BetterWYD, a modern rema
 - Set up core systems framework
 - Implement character controller and basic movement
 - Design and create database schema for character data
+- ✅ Set up Jira integration for project management (Completed Apr 17)
 
 ### Week 3-4: Core Game Systems
 - Implement inventory system
@@ -27,6 +28,7 @@ This document outlines the 3-month development plan for BetterWYD, a modern rema
 - Set up basic UI framework and main menus
 
 ### Milestones
+- ✅ Project management tooling with Jira integration
 - ✅ Basic character controller with movement
 - ✅ Inventory system with item management
 - ✅ Character progression framework
