@@ -4,7 +4,9 @@
 
 - Create a history file for Copilot Agent (You) to AgentRuntime folder
 - After every action create a log with short summary of action and timestamp
-- Read history file before every prompt to remember previous interactions
+- Use the history file to remember previous interactions
+- Use the history file to remember the last action taken
+- Create a log in the beginning of every prompt and update it end of every prompt
 - Create files with Markdownlint format
 
 ## Cross-Platform Compatibility
