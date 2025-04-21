@@ -1,0 +1,25 @@
+# Ignore API token and credential files
+*.env
+credentials.json
+jira_config.json
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+
+# User-specific files
+*.user
+*.userprefs
+*.suo
+*.cache
+
+# VS Code
+.vscode/
+
+# Unity generated
+*.meta
+
+# Generated documentation
+docs/

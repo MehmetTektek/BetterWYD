@@ -1,18 +1,20 @@
 # BetterWYD Project Instructions
 
-## Project Overview
-This is a modern remake of the classic MMORPG "With Your Destiny" (WYD) using Unity. The game features four character classes, extensive character progression, rich PvE content, and competitive PvP elements.
+## Core Rules
 
-## Development Guidelines
+- Create a history file for Copilot Agent (You) to AgentRuntime folder
+- After every action create a log with short summary of action and timestamp
+- Read history file before every prompt to remember previous interactions
+- Create files with Markdownlint format
 
-### Cross-Platform Compatibility
+## Cross-Platform Compatibility
 
-- Use macOS and Windows together for development
+- We are using macOS and Windows together for development
 - Consider compatibility when creating new implementations
 
 ## Documentation and Organization
 
-- Follow existing documentation
+- Follow existing documentation in Documentation folder
 - Keep the project organized
 - Create new folders for new implementations
 - Always create or update documentation with up-to-date status of project

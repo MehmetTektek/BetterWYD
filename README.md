@@ -4,7 +4,9 @@ This project is a modern remake of the classic MMORPG "With Your Destiny" (WYD).
 
 ## About the Game
 
-"With Your Destiny" was a popular MMORPG originally released in the early 2000s. This remake aims to capture the essence of the original game while introducing modern gameplay mechanics and improved graphics.
+"With Your Destiny" was a popular MMORPG originally released in the early 2000s. This remake aims to
+capture the essence of the original game while introducing modern gameplay mechanics and improved
+graphics.
 
 ## Features
 
@@ -15,13 +17,14 @@ This project is a modern remake of the classic MMORPG "With Your Destiny" (WYD).
 
 ## Development
 
-This project is developed using Unity 2022.3 LTS or newer. We follow a structured development approach with well-defined coding standards and project organization.
+This project is developed using Unity 2022.3 LTS or newer. We follow a structured development
+approach with well-defined coding standards and project organization.
 
 ### Project Structure
 
 The project follows a standardized Unity project structure with clear organization:
 
-```
+```text
 Assets/
 ├── Animations/      # Character and object animations
 ├── Art/             # Models, textures, materials, and sprites
@@ -34,7 +37,8 @@ Assets/
 └── ThirdParty/      # External assets and plugins
 ```
 
-For more details on the project structure, see the [Style Guide](Documentation/StyleGuide.md).
+For more details on the project structure, see the
+[Style Guide](Documentation/Guidelines/StyleGuide.md).
 
 ### Coding Standards
 
@@ -45,12 +49,15 @@ We follow consistent coding conventions to ensure maintainability and readabilit
 - **Documentation**: XML comments for public APIs and thorough documentation
 - **Unity Practices**: Component-based design with performance optimization
 
-See the complete [Style Guide](Documentation/StyleGuide.md) for detailed coding standards.
+See the complete [Coding Standards](Documentation/Coding/CodingStandards.md) for detailed coding
+guidelines.
 
 ### Documentation
 
-- [Style Guide](Documentation/StyleGuide.md) - Coding conventions and project structure
-- [Technical Design Document](Documentation/TechnicalDesignDocument.md) - System architecture and implementation
+- [Coding Standards](Documentation/Coding/CodingStandards.md) - Coding conventions and practices
+- [Style Guide](Documentation/Guidelines/StyleGuide.md) - Project structure and style guidelines
+- [Markdown Style Guide](Documentation/Guidelines/MarkdownStyleGuide.md) - Documentation formatting
+- [Technical Design Document](Documentation/TechnicalDesignDocument.md) - System architecture
 - [Game Design Document](Documentation/GameDesignDocument.md) - Game mechanics and features
 - [Git Documentation](Documentation/GitDocumentation.md) - Version control workflow
 - [Development Roadmap](Documentation/DevelopmentRoadmap.md) - Project timeline and milestones
