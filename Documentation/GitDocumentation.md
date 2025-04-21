@@ -32,7 +32,8 @@ Git is a distributed version control system that allows multiple developers to w
 1. Download Git from [git-scm.com](https://git-scm.com/downloads)
 2. Install with default settings
 3. Verify installation by opening a terminal/command prompt and typing:
-   ```
+
+   ```bash
    git --version
    ```
 
@@ -119,11 +120,13 @@ git merge <source-branch>   # Merge the source branch into the current branch
 For the BetterWYD project, we recommend the following workflow:
 
 1. **Pull the latest changes** before starting work:
+
    ```bash
    git pull origin main
    ```
 
 2. **Create a feature branch** for your work:
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -131,12 +134,14 @@ For the BetterWYD project, we recommend the following workflow:
 3. **Make changes** to the project
 
 4. **Commit changes** with descriptive messages:
+
    ```bash
    git add .
    git commit -m "Add player movement system"
    ```
 
 5. **Push your branch** to the remote repository:
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -144,12 +149,14 @@ For the BetterWYD project, we recommend the following workflow:
 6. **Create a Pull Request** on GitHub for review
 
 7. After review, **merge** the Pull Request into the main branch using:
+
    ```bash
    git checkout main
    git merge feature/your-feature-name --no-ff -m "Merge feature/your-feature-name: Brief description of the changes"
    ```
 
 8. **Push the merged changes** to the remote repository:
+
    ```bash
    git push origin main
    ```
@@ -162,6 +169,7 @@ The BetterWYD project includes a Git hook integration with Jira to automatically
 
 1. The integration scripts are located in `DevTools/JiraIntegration/`
 2. Create a copy of the post-commit hook on your local machine:
+
    ```bash
    # For Windows (PowerShell):
    Copy-Item "DevTools/JiraIntegration/hooks/post-commit.ps1" ".git/hooks/post-commit"
@@ -172,6 +180,7 @@ The BetterWYD project includes a Git hook integration with Jira to automatically
    ```
 
 3. Make sure the script is executable:
+
    ```bash
    # For Windows (PowerShell):
    icacls .git\hooks\post-commit /grant Everyone:RX
@@ -187,20 +196,25 @@ The BetterWYD project includes a Git hook integration with Jira to automatically
 When making commits, you can reference Jira tickets and even transition them to different states:
 
 1. **Simple reference**: Just include the ticket ID
+
    ```bash
    git commit -m "BWYD-123: Add new feature"
    ```
+
    This will add your commit details as a comment on the BWYD-123 ticket.
 
 2. **With status transition**: Add a hashtag to change the ticket status
+
    ```bash
    git commit -m "BWYD-123 #done: Fix critical bug"
    ```
+
    This will add a comment and transition the ticket to "Done" status.
 
 ### Supported Transition Commands
 
 The following transition commands are supported:
+
 - `#inprogress` → "In Progress"
 - `#review` → "In Review"
 - `#done`, `#resolved`, `#fixed`, `#complete`, `#completed`, `#close`, `#closed` → "Done"
@@ -208,6 +222,7 @@ The following transition commands are supported:
 ### Manual Update
 
 You can also manually update Jira from a specific commit:
+
 ```bash
 python DevTools/JiraIntegration/update_jira_from_commit.py <commit-hash>
 ```
@@ -221,12 +236,14 @@ The project includes a .gitignore file configured for Unity projects. This preve
 ### Large Files
 
 Avoid committing large binary files directly to Git. Consider using Git LFS (Large File Storage) for:
+
 - Textures
 - Models
 - Audio files
 - Video files
 
 To set up Git LFS:
+
 ```bash
 git lfs install
 git lfs track "*.psd"  # Example for Photoshop files
@@ -236,6 +253,7 @@ git lfs track "*.fbx"  # Example for 3D models
 ### Scene Files
 
 Be cautious when merging scene files as conflicts can be difficult to resolve. Consider:
+
 - Dividing scenes into smaller, more manageable scenes
 - Using prefabs for complex objects
 
@@ -272,6 +290,7 @@ For BetterWYD we follow a specific branching strategy:
 - Use `--no-ff` (no fast-forward) when merging feature branches to preserve branch history
 - Create meaningful merge commit messages that summarize the feature or changes
 - Example:
+
   ```bash
   git merge feature/jira-integration --no-ff -m "Merge feature/jira-integration: Add Jira integration tools and workflow"
   ```
@@ -287,11 +306,13 @@ For BetterWYD we follow a specific branching strategy:
 ### Active Branches
 
 Currently, the main active branches are:
+
 - `main`: The primary development branch
 
 ### Upcoming Branches
 
 Planned branches for upcoming features:
+
 - `feature/character-controller`: For implementing basic player movement
 - `feature/database-schema`: For implementing initial database structure
 
@@ -312,6 +333,7 @@ For Unity-specific merge conflicts, consider using Unity's Smart Merge tool.
 ### Handling Large Repositories
 
 If the repository becomes too large:
+
 - Use Git LFS for large binary files
 - Consider cleaning up the repository with tools like BFG Repo-Cleaner
 - Archive old branches that are no longer needed
@@ -319,11 +341,13 @@ If the repository becomes too large:
 ### Common Git Errors
 
 - **"fatal: refusing to merge unrelated histories"**
+
   ```bash
   git pull origin main --allow-unrelated-histories
   ```
 
 - **"You have unstaged changes"**
+
   ```bash
   git stash
   # Perform your operation
@@ -331,6 +355,7 @@ If the repository becomes too large:
   ```
 
 - **"Failed to push some refs"**
+
   ```bash
   git pull origin main
   git push origin main
