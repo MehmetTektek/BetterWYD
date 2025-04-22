@@ -16,8 +16,8 @@
 
 ## Documentation and Organization
 
-- Follow existing documentation in Documentation folder
-- Keep the project organized
+- Follow the comprehensive documentation standards defined in Documentation/Guidelines/DocumentationStandards.md
+- Keep the project organized according to Documentation/Guidelines/FolderStructure.md
 - Create new folders for new implementations
 - Always create or update documentation with up-to-date status of project
 
@@ -25,6 +25,7 @@
 
 - Add comments to scripts to make them easier to understand and maintain
 - Create headers for scripts with a brief summary and explanation of how they work
+- Follow C# documentation style guide in DocumentationStandards.md for all code documentation
 - Organize documentation with proper categorization via folders
 
 ## Architecture Patterns
