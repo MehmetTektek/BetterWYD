@@ -26,6 +26,8 @@ The BetterWYD project maintains several types of documentation:
 | Technical Design | System architecture and implementation details | `/Documentation/TechnicalDesignDocument.md` and `/Documentation/Architecture/` |
 | Development Guidelines | Standards and best practices | `/Documentation/Guidelines/` |
 | Development Roadmap | Project timeline and milestones | `/Documentation/DevelopmentRoadmap.md` |
+| Implementation Documentation | System-specific implementation details | `/Documentation/Implementation/` |
+| Project Structure | Current project organization | `/Documentation/ProjectStructureChanges.md` |
 | User Documentation | End-user instructions and help | Future: `/Documentation/UserGuide/` |
 
 ## Markdown Guidelines
@@ -135,6 +137,38 @@ All documentation should undergo review:
 2. **Style and consistency**: Checked against these documentation standards
 3. **Clarity and completeness**: Reviewed for comprehension by someone unfamiliar with the feature
 
+## Project Structure Updates
+
+To maintain accurate documentation of the project's organization:
+
+### Logging Project Structure Changes
+
+When modifying the project structure:
+
+1. Update the `/Documentation/ProjectStructureChanges.md` file with:
+   - Date of the change
+   - Folders added or removed
+   - Rationale for the changes
+   - Updated folder tree diagram
+
+2. Update related documentation to reflect the new structure:
+   - Implementation documentation references
+   - Path references in code examples
+   - Folder structure guidelines
+
+### Implementation Documentation Organization
+
+Implementation documentation is organized by system:
+
+- `/Documentation/Implementation/[SystemName]/`
+  - `Overview.md` - System description and architecture
+  - `API.md` - Public interface documentation
+  - `DataStructures.md` - Core data models
+  - `Usage.md` - Integration examples
+  - `Testing.md` - Testing guidelines
+
+Each system folder follows the standard template to ensure consistency across all implementation documentation.
+
 ## References
 
 - [Unity Documentation Style Guide](https://unity.com/documentation)
@@ -142,3 +176,4 @@ All documentation should undergo review:
 - [Google Developer Documentation Style Guide](https://developers.google.com/style)
 - [BetterWYD Markdown Style Guide](/Documentation/Guidelines/MarkdownStyleGuide.md)
 - [BetterWYD Folder Structure Guidelines](/Documentation/Guidelines/FolderStructure.md)
+- [BetterWYD Project Structure Changes](/Documentation/ProjectStructureChanges.md)

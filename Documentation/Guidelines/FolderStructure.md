@@ -1,68 +1,78 @@
-# BetterWYD Project Folder Structure
+# Folder Structure Guidelines
 
-## Overview
-
-This document defines the standard folder structure for the BetterWYD project, ensuring consistency and organization across all development environments. Proper folder structure is critical for cross-platform compatibility between macOS and Windows development environments and for maintaining an efficient workflow as the project scales.
-
-## Unity Assets Structure
-
-All game assets must be placed within the Unity `Assets` folder to be recognized by the engine. The following structure outlines our standardized organization:
+## Current Project Structure
+The BetterWYD project follows this updated organizational structure:
 
 ```
 Assets/
-├── Core/                  # Core game systems and framework
-│   ├── GameManagement/    # Game managers and core controllers
-│   ├── Input/             # Input system components
-│   ├── Events/            # Event system and messaging
-│   └── Utils/             # Utility scripts and helpers
-│
-├── Characters/            # Character-related assets
-│   ├── Player/            # Player character models, animations, controllers
-│   ├── Classes/           # Class-specific implementations and assets
-│   ├── NPCs/              # Non-player character assets
-│   └── Enemies/           # Enemy character assets
-│
-├── UI/                    # User interface assets
-│   ├── HUD/               # Heads-up display elements
-│   ├── Menus/             # Main menu and submenu screens
-│   ├── Common/            # Reusable UI components
-│   └── Fonts/             # Typography assets
-│
-├── Environments/          # World and environment assets
-│   ├── Kersef/            # Kersef continent assets
-│   ├── Dungeons/          # Dungeon environments
-│   ├── Props/             # Environmental props and decorations
-│   └── Effects/           # Environmental effects (fog, particles, etc.)
-│
-├── Audio/                 # Audio assets
-│   ├── Music/             # Background music tracks
-│   ├── SFX/               # Sound effects
-│   └── Ambient/           # Ambient sound loops
-│
-├── VFX/                   # Visual effects
-│   ├── Combat/            # Combat-related effects
-│   ├── Skills/            # Skill and ability effects
-│   └── Environment/       # Environmental visual effects
-│
-├── Networking/            # Networking assets and components
-│   ├── Prefabs/           # Network-specific prefabs
-│   └── Scripts/           # Network scripts and components
-│
-├── Resources/             # Assets loaded at runtime
-│
-├── ScriptableObjects/     # Scriptable object assets
-│   ├── Items/             # Item definitions
-│   ├── Skills/            # Skill definitions
-│   ├── Quests/            # Quest definitions
-│   └── Character/         # Character data definitions
-│
-└── Development/           # Development and testing assets
-    ├── Scenes/            # Test scenes
-    │   └── TestScene.unity # Main test scene for development
-    ├── Prefabs/           # Test prefabs
-    ├── Scripts/           # Experimental scripts
-    └── Materials/         # Test materials
+├── Core/               # Core game systems and essential utilities
+│   ├── GameManagement/ # Game managers and global controllers
+│   ├── Input/          # Input processing systems including player input handlers
+│   ├── Events/         # Event system implementation
+│   └── Utils/          # Utility classes and helper functions
+├── Characters/         # All character-related assets
+│   ├── Player/         # Player character models, animations and controllers
+│   └── NPCs/           # Non-player characters
+├── UI/                 # User interface elements
+│   ├── HUD/            # Heads-up display elements
+│   └── Menus/          # Menu screens and components
+├── ScriptableObjects/  # Game data defined as ScriptableObjects
+│   ├── Items/          # Item definitions
+│   └── Character/      # Character data
+└── Development/        # Development-only assets and test implementations
+    ├── Scenes/         # Test scenes
+    ├── Scripts/        # Development scripts
+    └── Prefabs/        # Test prefabs
 ```
+
+## Recent Project Structure Updates
+As of April 22, 2025, we've streamlined the folder structure to remove empty folders and reorganize implementations. The following changes were made:
+
+1. Removed unused empty folders (Classes, Enemies, Common, Fonts, Environments and subdirectories, Skills, Quests)
+2. Moved core input implementations from Development to Core/Input
+3. Moved PlayerCharacterController from Development to Characters/Player
+4. Removed Materials folder from Development since it's currently unused
+
+Empty folders will be added back as needed when implementations begin for those systems.
+
+## Guiding Principles
+
+1. **Functional Separation**: Assets are organized by their functional role in the game
+2. **Clear Hierarchy**: Establish a clear parent/child relationship between folders
+3. **Consistency**: Follow the same naming conventions and organizational patterns throughout
+4. **Discoverability**: Make assets easy to find based on their purpose
+5. **Cross-platform Compatibility**: Ensure folder names and paths work on both macOS and Windows
+
+## Implementation Files
+
+Implementation-specific scripts should be placed in their respective functional directories:
+- Core game systems go in appropriate subfolders of `Assets/Core/`
+- Character controllers go in `Assets/Characters/[CharacterType]/Scripts/`
+- UI scripts go in `Assets/UI/[UISection]/Scripts/`
+
+Development and test scripts should remain in the `Assets/Development/Scripts/` folder until they are finalized. Once a feature is complete and tested, scripts should be moved to their appropriate production location.
+
+### Migration Guidelines
+
+When migrating scripts from Development to production folders:
+
+1. Create appropriate Scripts folder in the destination if it doesn't exist
+2. Update any namespace declarations to match the new location
+3. Update any references in other scripts or prefabs
+4. Test thoroughly after migration
+5. Document the migration in ProjectStructureChanges.md
+
+## Naming Conventions
+
+- Use PascalCase for folder names
+- Avoid special characters in folder names
+- Keep folder names concise but descriptive
+- Prefer singular nouns for category folders (e.g., "Character" not "Characters")
+
+## Version Control Considerations
+
+- Add `.gitkeep` files to empty folders that should be preserved in version control
+- Follow `.gitignore` patterns to exclude appropriate files and folders
 
 ## Development Workspace
 
@@ -73,7 +83,6 @@ The `Development` folder is specifically for work-in-progress features, testing,
 - `Development/Scenes`: Contains test scenes for feature development
 - `Development/Prefabs`: Contains prototype prefabs for testing
 - `Development/Scripts`: Contains experimental scripts not yet ready for production
-- `Development/Materials`: Contains temporary materials for testing
 
 ## Cross-Platform Considerations
 
@@ -108,12 +117,32 @@ When working with Git:
 
 4. **Dependency Management**: Keep related assets together to reduce dependencies between folders
 
+## Directory Structure Management
+
+### When to Add New Folders
+
+Create new folders when:
+- Implementing a new major system
+- Adding a new category of assets
+- Logical grouping would improve organization
+- The number of files in a folder exceeds 15-20
+
+### When to Remove Folders
+
+Remove folders when:
+- They remain empty with no planned use in the next 2 development phases
+- Their purpose has been consolidated with another folder
+- The system they were intended for has been removed from the project scope
+
+Always document folder removals in the ProjectStructureChanges.md file.
+
 ## Conclusion
 
-Following this folder structure will ensure consistency across the BetterWYD project and facilitate efficient collaboration among team members. As the project evolves, this structure may be refined to better accommodate new features and workflows.
+This folder structure is a living standard that evolves with the project. Refer to the ProjectStructureChanges.md file for a history of structural updates. All team members should follow these guidelines to maintain consistency across the BetterWYD project and facilitate efficient collaboration.
 
 ## References
 
 - Unity Best Practices Documentation
 - BetterWYD Technical Design Document
 - Cross-Platform Development Guidelines
+- [BetterWYD Project Structure Changes](/Documentation/ProjectStructureChanges.md)

@@ -3,7 +3,7 @@
 ## Core Rules
 
 - After every action create a log with short summary of action and timestamp
-- Use the history file to remember previous interactions
+- Use the history file to remember previous interactions. Located in AgentRuntime/CopilotHistory.md
 - Read last 5 interaction and if needed read more
 - Create a log in the beginning of every prompt and update it end of every prompt
 - Create files with Markdownlint format
@@ -22,6 +22,8 @@
 
 ## Code Quality
 
+- Do not create or code any scripts, guide user with code snippets and explainations.
+- Specify name and where scripts needs to be created.
 - Add comments to scripts to make them easier to understand and maintain
 - Create headers for scripts with a brief summary and explanation of how they work
 - Follow C# documentation style guide in DocumentationStandards.md for all code documentation
