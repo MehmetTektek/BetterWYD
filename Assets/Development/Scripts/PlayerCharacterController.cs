@@ -45,6 +45,7 @@ namespace BetterWYD.Development
         /// <param name="value">Input value containing movement vector</param>
         public void OnMove(InputValue value)
         {
+            // Store the movement input value from the Input System
             movementInput = value.Get<Vector2>();
         }
 

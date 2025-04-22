@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "BetterWYD.sln"
+    "dotnet.defaultSolution": "BetterWYD-1.sln"
 }

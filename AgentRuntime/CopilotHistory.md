@@ -150,6 +150,60 @@
 
 ### Interaction 25
 
-- **Time**: April 22, 2025 (Nisan 22, 2025)
+- **Time**: April 22, 5 (Nisan 22, 2025)
 - **Action**: Pushing changes to GitHub
 - **Summary**: User requested to push all changes to GitHub. This includes the newly created folder structure, PlayerCharacterController script, documentation for the character controller, documentation standards reference file, and updated custom instructions file. Creating a commit with a descriptive message and pushing to the remote repository.
+
+### Interaction 26
+
+- **Time**: April 22, 2025 (Nisan 22, 2025)
+- **Action**: Creating testing guide for PlayerCharacterController in Unity
+- **Summary**: User requested step-by-step guidance for testing the PlayerCharacterController implementation in Unity. Providing detailed instructions for setting up the test scene, configuring GameObjects with required components, setting up input controls, and testing the character controller implementation with proper configuration for rigidbody physics and ground detection.
+
+### Interaction 27
+
+- **Time**: April 22, 2025 (Nisan 22, 2025)
+- **Action**: Troubleshooting Input System event binding issues
+- **Summary**: User reported an issue finding the OnMove function in the static functions dropdown when trying to set up input event bindings. Investigating the problem with Unity's Input System integration and providing alternative solutions to properly connect input actions to the PlayerCharacterController script.
+
+### Interaction 28
+
+- **Time**: April 22, 2025 (Nisan 22, 2025)
+- **Action**: Further troubleshooting Input System in Unity 6
+- **Summary**: User continues to have issues with finding the OnMove function in Unity 6's Input System. Investigating Unity 6-specific approaches to handling input binding and providing a revised solution specific to Unity 6's new Input System implementation, which may handle things differently than previous versions.
+
+### Interaction 29
+
+- **Time**: April 22, 2025 (Nisan 22, 2025)
+- **Action**: Continuing Unity 6 PlayerCharacterController test setup with Option 2
+- **Summary**: User successfully applied Option 2 (using "Send Messages" behavior for input binding) and requested guidance to continue from Step 5. Providing detailed instructions for completing the Input System configuration, setting up the physics layers, and finalizing the scene for testing the character controller with the "Send Messages" approach.
+
+### Interaction 30
+
+- **Time**: April 22, 2025 (Nisan 22, 2025)
+- **Action**: Updating documentation for PlayerCharacterController
+- **Summary**: Updating the existing PlayerCharacterController documentation with Unity 6-specific implementation details, particularly focusing on the "Send Messages" approach for input binding that we successfully used. Adding troubleshooting guidance and more detailed setup instructions to ensure the documentation is complete for future reference.
+
+### Interaction 31
+
+- **Time**: April 22, 2025 (Nisan 22, 2025)
+- **Action**: Creating implementation documentation folders
+- **Summary**: User requested creation of dedicated folders for each implementation within the Documentation folder. Creating an organized folder structure to store implementation-specific documentation, ensuring that each component or system has its own dedicated documentation space following the project's documentation standards.
+
+### Interaction 32
+
+- **Time**: April 22, 2025 (Nisan 22, 2025)
+- **Action**: Creating implementation documentation index
+- **Summary**: Creating an index document for the implementation documentation folders to provide an overview of all implemented systems and their documentation status. This index will serve as a central reference point for navigating the implementation-specific documentation structure and tracking progress across different game systems.
+
+### Interaction 33
+
+- **Time**: April 22, 2025 (Nisan 22, 2025)
+- **Action**: Creating documentation templates and updating Documentation README
+- **Summary**: Creating a template file for each implementation folder to ensure consistency in documentation format across all systems. Also updating the main Documentation README to reference the new implementation documentation structure and provide clear guidance on how to navigate and contribute to the project documentation.
+
+### Interaction 34
+
+- **Time**: April 22, 2025 (Nisan 22, 2025)
+- **Action**: Pushing updated documentation structure to Git
+- **Summary**: User requested to push all recent changes to Git before moving to new implementations. This includes the new implementation documentation structure with dedicated folders for each system, the implementation template, implementation index, and updated Documentation README. Creating a commit with a descriptive message and pushing to the remote repository.
