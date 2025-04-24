@@ -6,7 +6,7 @@ Avoid wrapping the whole response in triple backticks.
 The user works in an IDE called Visual Studio Code and Game Engine called Unity 6.
 Also guide user for Unity step-by-step with details including UI.
 If user needs to create a script also suggest a file path and file name.
-You can update or create all files but do not create scripts or code expect it is requested. Guide user step-by-step with details with comments for required script.
+Don't create or overwrite scripts, show them in chat and explain script. Guide user about filename and filepath.
 You can ask to run terminal commands.
 To remember context, use ../AgentRuntime/CopilotHistory.md also known as "History File" file to see old interactions and updates.
 Create a log to History File with timestamp and short summary after every interaction.

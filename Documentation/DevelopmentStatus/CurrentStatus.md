@@ -13,15 +13,17 @@ This document tracks the current development status of BetterWYD against the roa
 | Character controller | Not Started | - | - |
 | Database schema | Not Started | - | - |
 | Jira Integration | Completed | - | Integrated development tools with Jira for issue tracking |
-| Inventory System | In Progress | - | Core functionality implemented, testing pending |
+| Inventory System | In Progress | - | Core functionality implemented, testing in progress |
+| Inventory Testing | In Progress | - | Setting up test scene and UI components |
 
 ## Overall Progress
 
 ### Phase 1: Foundation & Core Systems
-- Week 1-2: 25% complete
+- Week 1-2: 30% complete
   - Project setup completed
   - Documentation structure established
   - Inventory system core functionality implemented
+  - Inventory test framework in progress
 - Week 3-4: Not started
 
 ### Phase 2: Gameplay Implementation
@@ -32,6 +34,7 @@ This document tracks the current development status of BetterWYD against the roa
 
 ## Recent Milestones
 
+- **April 25, 2025**: Started implementing inventory test scene UI components
 - **April 24, 2025**: Completed documentation reorganization and established documentation hub
 - **April 23, 2025**: Implemented core inventory system functionality (InventoryManager)
 - **April 22, 2025**: Created initial inventory system structure
@@ -45,13 +48,13 @@ This document tracks the current development status of BetterWYD against the roa
 ## Next Steps
 
 1. Complete inventory system testing
-   - Create test scene in Scenes folder
    - Implement InventoryTester script
-   - Document test results
+   - Create test items as ScriptableObjects
+   - Run the test suite and document results
 2. Complete project architecture design
 3. Begin implementing character controller prototype
 4. Set up database schema for character data
 
 ---
 
-*Last Updated: April 24, 2025*
+*Last Updated: April 25, 2025*
