@@ -11,6 +11,8 @@ This document outlines the coding conventions, style guidelines, and project str
 5. [Prefab Structure](#prefab-structure)
 6. [Scene Organization](#scene-organization)
 7. [Documentation Standards](#documentation-standards)
+8. [Markdown Formatting](#markdown-formatting)
+9. [Version Control Practices](#version-control-practices)
 
 ## C# Coding Conventions
 
@@ -112,41 +114,33 @@ The BetterWYD project follows this folder structure within the Assets folder:
 
 ```
 Assets/
-├── Animations/
-│   ├── Characters/
-│   ├── Environment/
-│   └── UI/
-├── Art/
-│   ├── Materials/
-│   ├── Models/
-│   ├── Textures/
-│   └── Sprites/
-├── Audio/
-│   ├── Music/
-│   ├── SFX/
-│   └── Ambient/
-├── Prefabs/
-│   ├── Characters/
-│   ├── Environment/
-│   ├── Items/
-│   └── UI/
-├── Resources/
-├── Scenes/
-│   ├── MainMenu/
-│   ├── Levels/
-│   └── Loading/
-├── Scripts/
-│   ├── Core/
-│   ├── Characters/
-│   ├── UI/
-│   ├── Gameplay/
-│   ├── Network/
-│   └── Utils/
-├── Settings/
-│   ├── Input/
-│   └── Quality/
-└── ThirdParty/
+├── Core/               # Core game systems and essential utilities
+│   ├── GameManagement/ # Game managers and global controllers
+│   ├── Input/          # Input processing systems including player input handlers
+│   ├── Events/         # Event system implementation
+│   └── Utils/          # Utility classes and helper functions
+├── Characters/         # All character-related assets
+│   ├── Player/         # Player character models, animations and controllers
+│   └── NPCs/           # Non-player characters
+├── UI/                 # User interface elements
+│   ├── HUD/            # Heads-up display elements
+│   └── Menus/          # Menu screens and components
+├── ScriptableObjects/  # Game data defined as ScriptableObjects
+│   ├── Items/          # Item definitions
+│   └── Character/      # Character data
+├── Settings/           # Project configurations and settings
+├── Scenes/             # Game scenes and levels
+├── Resources/          # Runtime-loaded assets
+├── Networking/         # Multiplayer functionality
+├── TextMesh Pro/       # Text rendering system
+├── VFX/                # Visual effects
+└── Development/        # Development-only assets and test implementations
+    ├── Scenes/         # Test scenes
+    ├── Scripts/        # Development scripts
+    └── Prefabs/        # Test prefabs
 ```
+
+For detailed information about the project structure, folder management guidelines, and organization principles, see the [Folder Structure Guidelines](/Documentation/Guidelines/FolderStructure.md).
 
 ### Scripts Organization
 
@@ -324,6 +318,20 @@ Scene
 - Document architectural decisions and patterns used
 - Create diagrams for complex systems
 
+### Markdown Formatting
+
+All documentation files should follow our markdown standards:
+
+- Follow the [Markdownlint Rules Guide](/Documentation/Guidelines/MarkdownlintRulesGuide.md) for consistent formatting
+- Use the project's `.markdownlint.json` configuration
+- Write clear, concise, and well-structured documentation
+- Include a single top-level heading as the document title
+- Use proper heading hierarchy without skipping levels
+- Use dash (-) for unordered lists
+- Use incremental numbers for ordered lists
+- Specify language for code blocks
+- Keep line length under 100 characters where possible
+
 ## Version Control Practices
 
 See the [Git Documentation](GitDocumentation.md) for specific version control guidelines, including:
@@ -335,4 +343,12 @@ See the [Git Documentation](GitDocumentation.md) for specific version control gu
 
 ## Conclusion
 
-Following these guidelines will ensure consistency across the BetterWYD project, improve code readability, and facilitate collaboration among team members. If you have questions or suggestions for improving these guidelines, please discuss with the team.
+Following these guidelines will ensure consistency across the BetterWYD project, improve code readability, and facilitate efficient development. If you have questions or suggestions for improving these guidelines, note them for future reference.
+
+## References
+
+- [BetterWYD Folder Structure Guidelines](/Documentation/Guidelines/FolderStructure.md)
+- [BetterWYD Markdownlint Rules Guide](/Documentation/Guidelines/MarkdownlintRulesGuide.md)
+- [BetterWYD Documentation Standards](/Documentation/Guidelines/DocumentationStandards.md)
+- [Unity Best Practices](https://docs.unity3d.com/Manual/MobileOptimizationPracticalGuide.html)
+- [C# Coding Conventions](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)

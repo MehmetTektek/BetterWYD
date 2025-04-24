@@ -16,14 +16,14 @@ This documentation provides guidelines and best practices for using Git version 
 
 ## Introduction to Git
 
-Git is a distributed version control system that allows multiple developers to work on the same project simultaneously. It tracks changes to files, enables reverting to previous states, and maintains a history of the project's development.
+Git is a distributed version control system that tracks changes to files, enables reverting to previous states, and maintains a history of the project's development.
 
 ### Why Git for Unity Projects?
 
 - **Version Control**: Track changes and revert to previous states if necessary
-- **Collaboration**: Multiple team members can work on the project simultaneously
 - **Backup**: The repository serves as a backup of your project
 - **Branching**: Create separate branches for features, bug fixes, or experiments
+- **Consistency**: Maintain a standardized workflow for development
 
 ## Setup and Configuration
 

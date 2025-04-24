@@ -23,11 +23,12 @@ The BetterWYD project maintains several types of documentation:
 | Type | Purpose | Location |
 |------|---------|----------|
 | Code Documentation | API, class, and method documentation | Inline comments and `/Documentation/Coding/` |
-| Technical Design | System architecture and implementation details | `/Documentation/TechnicalDesignDocument.md` and `/Documentation/Architecture/` |
+| Technical Design | System architecture and implementation details | `/Documentation/Architecture/TechnicalDesignDocument.md` and `/Documentation/Architecture/` |
+| Game Design | Game mechanics and feature specifications | `/Documentation/Design/GameDesignDocument.md` |
 | Development Guidelines | Standards and best practices | `/Documentation/Guidelines/` |
 | Development Roadmap | Project timeline and milestones | `/Documentation/DevelopmentRoadmap.md` |
 | Implementation Documentation | System-specific implementation details | `/Documentation/Implementation/` |
-| Project Structure | Current project organization | `/Documentation/ProjectStructureChanges.md` |
+| Project Structure | Current project organization | `/Documentation/Guidelines/ProjectStructureChanges.md` |
 | User Documentation | End-user instructions and help | Future: `/Documentation/UserGuide/` |
 
 ## Markdown Guidelines
@@ -70,7 +71,7 @@ All markdown files in the project should follow our established guidelines:
 
 ### Examples
 
-See the [PlayerCharacterController documentation](/Documentation/Coding/PlayerCharacterController.md) for a comprehensive example of proper code documentation.
+See the [PlayerCharacterController documentation](/Documentation/Implementation/CharacterSystem/PlayerCharacterController.md) for a comprehensive example of proper code documentation.
 
 ## Technical Design Documentation
 
@@ -145,7 +146,7 @@ To maintain accurate documentation of the project's organization:
 
 When modifying the project structure:
 
-1. Update the `/Documentation/ProjectStructureChanges.md` file with:
+1. Update the `/Documentation/Guidelines/ProjectStructureChanges.md` file with:
    - Date of the change
    - Folders added or removed
    - Rationale for the changes
@@ -176,4 +177,4 @@ Each system folder follows the standard template to ensure consistency across al
 - [Google Developer Documentation Style Guide](https://developers.google.com/style)
 - [BetterWYD Markdown Style Guide](/Documentation/Guidelines/MarkdownStyleGuide.md)
 - [BetterWYD Folder Structure Guidelines](/Documentation/Guidelines/FolderStructure.md)
-- [BetterWYD Project Structure Changes](/Documentation/ProjectStructureChanges.md)
+- [BetterWYD Project Structure Changes](/Documentation/Guidelines/ProjectStructureChanges.md)

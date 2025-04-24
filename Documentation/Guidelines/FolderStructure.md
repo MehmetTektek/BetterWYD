@@ -19,6 +19,12 @@ Assets/
 ├── ScriptableObjects/  # Game data defined as ScriptableObjects
 │   ├── Items/          # Item definitions
 │   └── Character/      # Character data
+├── Settings/           # Project configurations and settings
+├── Scenes/             # Game scenes and levels
+├── Resources/          # Runtime-loaded assets
+├── Networking/         # Multiplayer functionality
+├── TextMesh Pro/       # Text rendering system
+├── VFX/                # Visual effects
 └── Development/        # Development-only assets and test implementations
     ├── Scenes/         # Test scenes
     ├── Scripts/        # Development scripts
@@ -26,7 +32,13 @@ Assets/
 ```
 
 ## Recent Project Structure Updates
-As of April 22, 2025, we've streamlined the folder structure to remove empty folders and reorganize implementations. The following changes were made:
+As of April 24, 2025, we've made the following updates to our project structure:
+
+1. Added missing folders to the documentation that exist in the actual project (Networking, Settings, Scenes, Resources, TextMesh Pro, VFX)
+2. Added reference to the new markdownlint rules documentation
+3. Reorganized implementation documentation to follow the standard template
+
+Previous updates (April 22, 2025):
 
 1. Removed unused empty folders (Classes, Enemies, Common, Fonts, Environments and subdirectories, Skills, Quests)
 2. Moved core input implementations from Development to Core/Input
@@ -60,7 +72,7 @@ When migrating scripts from Development to production folders:
 2. Update any namespace declarations to match the new location
 3. Update any references in other scripts or prefabs
 4. Test thoroughly after migration
-5. Document the migration in ProjectStructureChanges.md
+5. Document the migration in the ProjectStructureChanges.md file
 
 ## Naming Conventions
 
@@ -138,11 +150,13 @@ Always document folder removals in the ProjectStructureChanges.md file.
 
 ## Conclusion
 
-This folder structure is a living standard that evolves with the project. Refer to the ProjectStructureChanges.md file for a history of structural updates. All team members should follow these guidelines to maintain consistency across the BetterWYD project and facilitate efficient collaboration.
+This folder structure is a living standard that evolves with the project. Refer to the ProjectStructureChanges.md file for a history of structural updates. Following these guidelines will maintain consistency across the BetterWYD project and facilitate efficient development.
 
 ## References
 
 - Unity Best Practices Documentation
 - BetterWYD Technical Design Document
 - Cross-Platform Development Guidelines
-- [BetterWYD Project Structure Changes](/Documentation/ProjectStructureChanges.md)
+- [BetterWYD Project Structure Changes](./ProjectStructureChanges.md)
+- [BetterWYD Markdownlint Rules Guide](./MarkdownlintRulesGuide.md)
+- [BetterWYD Markdown Style Guide](./MarkdownStyleGuide.md)

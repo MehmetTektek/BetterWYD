@@ -54,12 +54,14 @@ guidelines.
 
 ### Documentation
 
+**[→ Documentation Hub](Documentation/BetterWYD-Documentation-Hub.md)** - Central index for all documentation
+
 - [Coding Standards](Documentation/Coding/CodingStandards.md) - Coding conventions and practices
 - [Style Guide](Documentation/Guidelines/StyleGuide.md) - Project structure and style guidelines
 - [Markdown Style Guide](Documentation/Guidelines/MarkdownStyleGuide.md) - Documentation formatting
-- [Technical Design Document](Documentation/TechnicalDesignDocument.md) - System architecture
-- [Game Design Document](Documentation/GameDesignDocument.md) - Game mechanics and features
-- [Git Documentation](Documentation/GitDocumentation.md) - Version control workflow
+- [Technical Design Document](Documentation/Architecture/TechnicalDesignDocument.md) - System architecture
+- [Game Design Document](Documentation/Design/GameDesignDocument.md) - Game mechanics and features
+- [Git Documentation](Documentation/Guidelines/GitDocumentation.md) - Version control workflow
 - [Development Roadmap](Documentation/DevelopmentRoadmap.md) - Project timeline and milestones
 
 ## Getting Started

@@ -8,7 +8,7 @@
  * with the ItemDatabase for item definitions.
  * 
  * Created: April 22, 2025
- * Last Modified: April 22, 2025
+ * Last Modified: April 23, 2025
  */
 
 using UnityEngine;
@@ -21,33 +21,124 @@ namespace BetterWYD.Inventory
     /// <summary>
     /// Manages the player's inventory, allowing for adding, removing, and querying items.
     /// Implements stacking logic and slot management for efficient inventory operations.
+    /// For full API reference, see: /Documentation/Implementation/InventorySystem/InventoryManagerReference.md
     /// </summary>
     public class InventoryManager : MonoBehaviour
     {
         [Tooltip("Maximum number of slots in the inventory")]
-        public int maxSlots = 30;
-
+        [SerializeField] private int _maxSlots = 30;
+        
+        /// <summary>
+        /// Maximum number of inventory slots.
+        /// </summary>
+        public int MaxSlots => _maxSlots;
+        
         [Tooltip("List of item slots in the inventory")]
-        public List<ItemSlot> slots;
+        [SerializeField] private List<ItemSlot> _slots = new List<ItemSlot>();
+        
+        /// <summary>
+        /// Read-only access to inventory slots.
+        /// </summary>
+        public IReadOnlyList<ItemSlot> Slots => _slots;
+        
+        /// <summary>
+        /// Number of slots in the inventory.
+        /// </summary>
+        public int SlotCount => _slots?.Count ?? 0;
 
         /// <summary>
         /// Event triggered when an inventory slot changes.
         /// UI elements should subscribe to this event to stay updated.
+        /// 
+        /// Example usage:
+        /// <code>
+        /// inventoryManager.OnSlotChanged += (slot) => {
+        ///     UpdateSlotUI(slot);
+        /// };
+        /// </code>
         /// </summary>
-        public event System.Action<ItemSlot> OnSlotChanged;
+        public event Action<ItemSlot> OnSlotChanged;
+        
+        /// <summary>
+        /// Event triggered when the entire inventory layout changes.
+        /// </summary>
+        public event Action OnInventoryChanged;
 
         private void Start()
         {
             // Initialize the inventory with empty slots if none exist
             // This ensures the inventory has the correct number of slots on startup
-            if (slots == null || slots.Count == 0)
+            if (_slots == null || _slots.Count == 0)
             {
-                slots = new List<ItemSlot>(maxSlots);
-                for (int i = 0; i < maxSlots; i++)
-                {
-                    slots.Add(new ItemSlot());
-                }
+                InitializeInventory(_maxSlots);
             }
+        }
+        
+        /// <summary>
+        /// Initializes the inventory with a specific number of empty slots.
+        /// </summary>
+        /// <param name="slotCount">Number of slots to initialize</param>
+        public void InitializeInventory(int slotCount)
+        {
+            _slots = new List<ItemSlot>(slotCount);
+            
+            for (int i = 0; i < slotCount; i++)
+            {
+                _slots.Add(new ItemSlot());
+            }
+            
+            OnInventoryChanged?.Invoke();
+        }
+        
+        /// <summary>
+        /// Clears all items from the inventory.
+        /// </summary>
+        public void ClearInventory()
+        {
+            foreach (var slot in _slots)
+            {
+                slot.item = null;
+                slot.quantity = 0;
+            }
+            
+            OnInventoryChanged?.Invoke();
+        }
+        
+        /// <summary>
+        /// Retrieves a specific inventory slot.
+        /// </summary>
+        /// <param name="slotIndex">Index of the slot to retrieve</param>
+        /// <returns>The requested ItemSlot or null if index is invalid</returns>
+        public ItemSlot GetSlot(int slotIndex)
+        {
+            if (slotIndex >= 0 && slotIndex < _slots.Count)
+            {
+                return _slots[slotIndex];
+            }
+            
+            return null;
+        }
+        
+        /// <summary>
+        /// Sets the contents of a specific inventory slot.
+        /// </summary>
+        /// <param name="slotIndex">Index of the slot to modify</param>
+        /// <param name="item">Item to place in the slot</param>
+        /// <param name="quantity">Quantity of the item</param>
+        /// <returns>True if successful, false if index is invalid</returns>
+        public bool SetSlot(int slotIndex, ItemDefinition item, int quantity)
+        {
+            if (slotIndex < 0 || slotIndex >= _slots.Count)
+            {
+                return false;
+            }
+            
+            var slot = _slots[slotIndex];
+            slot.item = item;
+            slot.quantity = quantity;
+            
+            OnSlotChanged?.Invoke(slot);
+            return true;
         }
 
         /// <summary>
@@ -63,7 +154,7 @@ namespace BetterWYD.Inventory
             // 1. Contain the same item
             // 2. Are not at max stack size
             // 3. Have enough space for the amount we want to add
-            return slots.Find(slot => 
+            return _slots.Find(slot => 
                 slot.item == item && 
                 slot.quantity < item.maxStackSize && 
                 slot.quantity + amount <= item.maxStackSize);
@@ -76,7 +167,7 @@ namespace BetterWYD.Inventory
         /// <returns>First empty slot or null if inventory is full</returns>
         private ItemSlot FindEmptySlot()
         {
-            return slots.Find(slot => slot.isEmpty);
+            return _slots.Find(slot => slot.IsEmpty);
         }
 
         /// <summary>
@@ -149,7 +240,7 @@ namespace BetterWYD.Inventory
         }
 
         /// <summary>
-        /// Attempts to remove an item from the inventory.
+        /// Attempts to remove an item from the inventory by item ID.
         /// Removes from smallest stacks first to consolidate remaining items.
         /// </summary>
         /// <param name="itemId">ID of the item to remove</param>
@@ -165,7 +256,7 @@ namespace BetterWYD.Inventory
 
             // Find all slots with the specified item, ordered from smallest to largest quantity
             // This helps consolidate items by removing from smallest stacks first
-            var slotsWithItem = slots
+            var slotsWithItem = _slots
                 .Where(slot => slot.item?.itemId == itemId)
                 .OrderBy(slot => slot.quantity)
                 .ToList();
@@ -198,21 +289,56 @@ namespace BetterWYD.Inventory
         }
         
         /// <summary>
+        /// Removes a specified quantity of items from a specific slot.
+        /// </summary>
+        /// <param name="slotIndex">Index of the slot to remove from</param>
+        /// <param name="quantity">Quantity to remove</param>
+        /// <returns>True if successful</returns>
+        public bool RemoveItem(int slotIndex, int quantity = 1)
+        {
+            if (slotIndex < 0 || slotIndex >= _slots.Count || quantity <= 0)
+            {
+                return false;
+            }
+            
+            var slot = _slots[slotIndex];
+            if (slot.IsEmpty)
+            {
+                return false;
+            }
+            
+            if (slot.quantity <= quantity)
+            {
+                // Remove the entire stack
+                slot.quantity = 0;
+                slot.item = null;
+            }
+            else
+            {
+                // Remove part of the stack
+                slot.quantity -= quantity;
+            }
+            
+            OnSlotChanged?.Invoke(slot);
+            return true;
+        }
+        
+        /// <summary>
         /// Combines similar item stacks to optimize inventory space.
         /// Useful after removing items or when inventory is fragmented.
         /// </summary>
         public void OptimizeStacks()
         {
             // Process only non-empty slots with stackable items
-            foreach (var slot in slots.Where(s => !s.isEmpty && s.item.isStackable).ToList())
+            foreach (var slot in _slots.Where(s => !s.IsEmpty && s.item.isStackable).ToList())
             {
                 // Continue filling this slot until it's at max capacity
                 while (slot.quantity < slot.item.maxStackSize)
                 {
                     // Find another slot with the same item that's not full
-                    var otherSlot = slots.FirstOrDefault(s => 
+                    var otherSlot = _slots.FirstOrDefault(s => 
                         s != slot && // Not the same slot
-                        !s.isEmpty && // Has items
+                        !s.IsEmpty && // Has items
                         s.item == slot.item && // Same item
                         s.quantity < s.item.maxStackSize); // Not at max capacity
                     
@@ -243,6 +369,90 @@ namespace BetterWYD.Inventory
         }
         
         /// <summary>
+        /// Moves an item from one slot to another.
+        /// If the destination slot is empty, the item is moved completely.
+        /// If the destination contains the same item, stacking will be attempted.
+        /// </summary>
+        /// <param name="fromSlotIndex">Source slot index</param>
+        /// <param name="toSlotIndex">Destination slot index</param>
+        /// <returns>True if successful</returns>
+        public bool MoveItem(int fromSlotIndex, int toSlotIndex)
+        {
+            // Validate indices
+            if (fromSlotIndex < 0 || fromSlotIndex >= _slots.Count ||
+                toSlotIndex < 0 || toSlotIndex >= _slots.Count ||
+                fromSlotIndex == toSlotIndex)
+            {
+                return false;
+            }
+            
+            // Get references to the slots
+            ItemSlot fromSlot = _slots[fromSlotIndex];
+            ItemSlot toSlot = _slots[toSlotIndex];
+            
+            // Can't move from an empty slot
+            if (fromSlot.IsEmpty)
+            {
+                return false;
+            }
+            
+            // Case 1: Destination slot is empty - simple move
+            if (toSlot.IsEmpty)
+            {
+                toSlot.item = fromSlot.item;
+                toSlot.quantity = fromSlot.quantity;
+                
+                fromSlot.item = null;
+                fromSlot.quantity = 0;
+                
+                OnSlotChanged?.Invoke(fromSlot);
+                OnSlotChanged?.Invoke(toSlot);
+                return true;
+            }
+            
+            // Case 2: Same item type - try to stack
+            if (fromSlot.item == toSlot.item && toSlot.item.isStackable)
+            {
+                int spaceInToSlot = toSlot.item.maxStackSize - toSlot.quantity;
+                
+                if (spaceInToSlot <= 0)
+                {
+                    return false; // Destination slot is full
+                }
+                
+                int amountToMove = Mathf.Min(spaceInToSlot, fromSlot.quantity);
+                
+                toSlot.quantity += amountToMove;
+                fromSlot.quantity -= amountToMove;
+                
+                // Clear the from slot if it's now empty
+                if (fromSlot.quantity <= 0)
+                {
+                    fromSlot.item = null;
+                    fromSlot.quantity = 0;
+                }
+                
+                OnSlotChanged?.Invoke(fromSlot);
+                OnSlotChanged?.Invoke(toSlot);
+                return true;
+            }
+            
+            // Case 3: Different items - swap positions
+            ItemDefinition tempItem = toSlot.item;
+            int tempQuantity = toSlot.quantity;
+            
+            toSlot.item = fromSlot.item;
+            toSlot.quantity = fromSlot.quantity;
+            
+            fromSlot.item = tempItem;
+            fromSlot.quantity = tempQuantity;
+            
+            OnSlotChanged?.Invoke(fromSlot);
+            OnSlotChanged?.Invoke(toSlot);
+            return true;
+        }
+        
+        /// <summary>
         /// Splits a stack of items into two separate stacks.
         /// Useful for dividing resources or preparing items for trading.
         /// </summary>
@@ -252,12 +462,12 @@ namespace BetterWYD.Inventory
         public bool SplitStack(int slotIndex, int splitAmount)
         {
             // Validate the slot index
-            if (slotIndex < 0 || slotIndex >= slots.Count)
+            if (slotIndex < 0 || slotIndex >= _slots.Count)
                 return false;
             
             // Get the source slot and validate it contains enough items
-            var sourceSlot = slots[slotIndex];
-            if (sourceSlot.isEmpty || splitAmount >= sourceSlot.quantity)
+            var sourceSlot = _slots[slotIndex];
+            if (sourceSlot.IsEmpty || splitAmount >= sourceSlot.quantity)
                 return false; // Can't split an empty slot or take all items (use move instead)
             
             // Find an empty slot for the new stack
