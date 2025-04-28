@@ -54,6 +54,7 @@ This documentation hub serves as the central index for all guides, standards, an
 - [Character System](./Implementation/CharacterSystem/Overview.md) - Player character controls and systems
 - [Player Character Controller](./Implementation/CharacterSystem/PlayerCharacterController.md) - Player character controller implementation
 - [Inventory System](./Implementation/InventorySystem/Overview.md) - Item management and storage
+- [Item Definition Guide](./Implementation/Items/ItemDefinitionGuide.md) - Guide for creating and extending item definitions
 
 ## Development Tools
 
@@ -81,6 +82,7 @@ This documentation hub serves as the central index for all guides, standards, an
 
 ## Recent Updates
 
+- **25 Nisan 2025**: Added Item Definition Guide for creating and extending item definitions
 - **24 Nisan 2025**: Reorganized documentation files into appropriate folders
 - **24 Nisan 2025**: Added Markdownlint Rules Guide and created Documentation Hub
 - **22 Nisan 2025**: Updated Folder Structure Guidelines with current project organization

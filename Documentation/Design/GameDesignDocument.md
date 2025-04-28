@@ -1,3 +1,4 @@
+
 # BetterWYD Game Design Document
 
 ## Introduction
